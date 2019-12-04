@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: petclinic
+spec:
+  containers:
+    - name: petclinic
+      image: spring2go/spring-petclinic:1.0.0.RELEASE
