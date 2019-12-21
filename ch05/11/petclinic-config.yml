@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: petclinic-config-v2
+data:
+  SPRING_PROFILES_ACTIVE: mysql
+  DATASOURCE_URL: jdbc:mysql://mysql/petclinic
+  DATASOURCE_INIT_MODE: always
+  TEST_CONFIG: test_config_v2
