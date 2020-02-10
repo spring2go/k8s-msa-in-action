@@ -1,0 +1,31 @@
+# Configuration for alertmanager
+alertmanager:
+  config:
+    global:
+      smtp_from: alertmanager@gmail.com
+      smtp_require_tls: false
+      smtp_smarthost: 192.168.0.100:2525
+      resolve_timeout: 5m
+    route:
+      group_by: ["job"]
+      group_wait: 30s
+      group_interval: 5m
+      repeat_interval: 12h
+      receiver: "fake_email"
+      routes:
+        - match:
+            alertname: Watchdog
+          receiver: "null"
+    #This inhibit rule is a hack from: https://stackoverflow.com/questions/54806336/how-to-silence-prometheus-alertmanager-using-config-files/54814033#54814033
+    inhibit_rules:
+      - target_match_re:
+          alertname: ".+Overcommit"
+        source_match:
+          alertname: "Watchdog"
+        equal: ["prometheus"]
+    receivers:
+      - name: "null"
+      - name: "fake_email"
+        email_configs:
+          - send_resolved: true
+            to: me@gmail.com

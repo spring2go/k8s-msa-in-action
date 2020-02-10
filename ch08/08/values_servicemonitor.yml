@@ -1,0 +1,46 @@
+prometheus:
+  additionalServiceMonitors:
+    - name: "petclinic-gateway"
+      selector:
+        matchLabels:
+          svc: gateway
+      namespaceSelector:
+        matchNames:
+          - default
+      endpoints:
+        - port: http
+          path: /actuator/prometheus
+          scheme: http
+    - name: "petclinic-customers"
+      selector:
+        matchLabels:
+          svc: customers
+      namespaceSelector:
+        matchNames:
+          - default
+      endpoints:
+        - port: http
+          path: /actuator/prometheus
+          scheme: http
+    - name: "petclinic-vets"
+      selector:
+        matchLabels:
+          svc: vets
+      namespaceSelector:
+        matchNames:
+          - default
+      endpoints:
+        - port: http
+          path: /actuator/prometheus
+          scheme: http
+    - name: "petclinic-visits"
+      selector:
+        matchLabels:
+          svc: visits
+      namespaceSelector:
+        matchNames:
+          - default
+      endpoints:
+        - port: http
+          path: /actuator/prometheus
+          scheme: http
