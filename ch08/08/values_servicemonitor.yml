@@ -11,6 +11,17 @@ prometheus:
         - port: http
           path: /actuator/prometheus
           scheme: http
+    - name: "petclinic-web"
+      selector:
+        matchLabels:
+          svc: web
+      namespaceSelector:
+        matchNames:
+          - default
+      endpoints:
+        - port: http
+          path: /actuator/prometheus
+          scheme: http
     - name: "petclinic-customers"
       selector:
         matchLabels:
