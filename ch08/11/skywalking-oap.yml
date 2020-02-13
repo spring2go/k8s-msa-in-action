@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: oap
+  namespace: skywalking
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: oap
+      release: skywalking
+  template:
+    metadata:
+      labels:
+        app: oap
+        release: skywalking
+    spec:
+      containers:
+        - name: oap
+          image: apache/skywalking-oap-server:6.6.0-es6
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 11800
+              name: grpc
+            - containerPort: 12800
+              name: rest
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: oap
+  namespace: skywalking
+  labels:
+    service: oap
+spec:
+  ports:
+    - port: 12800
+      name: rest
+    - port: 11800
+      name: grpc
+    - port: 1234
+      name: page
+  selector:
+    app: oap
