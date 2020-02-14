@@ -56,8 +56,8 @@
       <hashTree/>
       <kg.apc.jmeter.threads.UltimateThreadGroup guiclass="kg.apc.jmeter.threads.UltimateThreadGroupGui" testclass="kg.apc.jmeter.threads.UltimateThreadGroup" testname="jp@gc - Ultimate Thread Group" enabled="true">
         <collectionProp name="ultimatethreadgroupdata">
-          <collectionProp name="-1402490151">
-            <stringProp name="1567">10</stringProp>
+          <collectionProp name="640854202">
+            <stringProp name="50">2</stringProp>
             <stringProp name="0">0</stringProp>
             <stringProp name="48">0</stringProp>
             <stringProp name="50547">300</stringProp>
